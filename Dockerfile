@@ -13,7 +13,6 @@ RUN npm run build
 FROM base as production
 WORKDIR /app
 
-ENV NODE_ENV=production
 RUN npm ci
 
 RUN addgroup -g 1001 -S nodejs
@@ -28,8 +27,3 @@ COPY --from=builder /app/public ./public
 
 CMD npm start
 
-FROM base as dev
-ENV NODE_ENV=development
-RUN npm install 
-COPY . .
-CMD npm run dev
