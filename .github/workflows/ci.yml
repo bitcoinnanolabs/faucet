@@ -17,11 +17,9 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and push
-        if: success()
         uses: docker/build-push-action@v3
         with:
           context: .
           platforms: linux/amd64
           push: true
-          file: ./Dockerfile
           tags: bitcoinnanolabs/faucet
