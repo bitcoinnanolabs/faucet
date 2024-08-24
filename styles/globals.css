@@ -1,0 +1,161 @@
+html,
+body {
+    background-color: #0c5731;
+    padding: 0;
+    margin: 0;
+    font-family: "Open Sans", sans-serif;
+    color: white;
+}
+
+body > div {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    align-items: center;
+}
+
+h1 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    text-align: center;
+}
+
+main {
+    background-color: white;
+    color: black;
+    padding: 1rem 0;
+    border-radius: 15px;
+    text-align: center;
+}
+
+main > div {
+    padding: 0 2rem;
+}
+
+main #faucet-drop-link {
+    padding: 1rem 1rem 0 1rem;
+    display: block;
+}
+
+main #receive-all {
+    margin-top: 1rem;
+}
+
+form {
+    border-top: 1px solid #dce9f9;
+    padding: 1rem 2rem 0 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+input {
+    padding: 0.5rem 1rem;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: none;
+    border: 2px solid #519b80;
+    color: #519b80;
+    font-size: 1.2rem;
+}
+
+input::placeholder {
+    opacity: 1;
+    color: gray;
+}
+
+button {
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    border: none;
+    background-color: #519b80;
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #3cd278;
+}
+
+button:active {
+    background-color: #065843;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    background-color: gray;
+}
+
+a {
+    color: inherit;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    max-width: 100%;
+}
+
+footer * {
+    width: 100%;
+}
+
+footer #not-maintained {
+    font-size: 1.5rem;
+}
+
+footer #donate-to {
+    font-size: 0.7rem;
+}
+
+@media screen and (max-width: 600px) {
+    footer {
+        gap: 1rem;
+    }
+
+    footer * {
+        font-size: 0.8rem;
+    }
+
+    footer #not-maintained {
+        font-size: 1rem;
+    }
+
+    footer #donate-to {
+        font-size: 0.6rem;
+    }
+}
+
+footer .address {
+    word-wrap: break-word;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+#spin {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(202, 202, 202, 0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+    -webkit-animation: spin 1s ease-in-out infinite;
+}
+@keyframes spin {
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+@-webkit-keyframes spin {
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
