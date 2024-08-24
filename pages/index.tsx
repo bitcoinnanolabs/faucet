@@ -3,16 +3,11 @@ import generateSendWork from "../lib/promisifyNanoWebGLPoW";
 import getTxnData from "../lib/getTxnData";
 import {
     addressRegex,
-    donationAddress,
-    email,
-    faucetAddress,
     faucetAmountMaxInNano,
     faucetAmountMinInNano,
     faucetAmountPercentage,
-    fediverse,
-    github,
     nanolookerBaseUrl,
-    twitter,
+   
 } from "../lib/constants";
 
 const Home = () => {
@@ -72,65 +67,54 @@ const Home = () => {
             <h1>Bitcoin Nano faucet</h1>
 
             <main>
-                <div>
-                    <h2>
-                        Pays {faucetAmountPercentage}% of the faucet balance in
-                        Bitcoin Nano Wallet (min. {faucetAmountMinInNano} and max.
-                        {faucetAmountMaxInNano} BTCO)
-                    </h2>
-                    <h3>Please be nice with the faucet, thanks! 🥰</h3>
-                    {step && (
-                        <h3>
-                            {step === "info"
-                                ? "Getting faucet account info..."
-                                : step === "work"
-                                ? "Generating work for your block, please keep this tab open!"
-                                : "Signing and sending your block..."}
-                        </h3>
-                    )}
-                </div>
-                <form onSubmit={onSubmit}>
-                    <input
-                        name="xno-address"
-                        id="xno-address"
-                        type="text"
-                        maxLength={65}
-                        autoComplete="off"
-                        autoCorrect="off"
-                        autoFocus
-                        required
-                        placeholder="Insert your btco_123 address here"
-                    />
-                    <button disabled={!!step} type="submit">
-                        {!step ? "Receive" : <div id="spin"></div>}
-                    </button>
-                </form>
-
+                {!hash && ( 
+                    <div>
+                        <h2>
+                            Pays {faucetAmountPercentage}% of the faucet balance in
+                            Bitcoin Nano Wallet (min. {faucetAmountMinInNano} and max.
+                            {faucetAmountMaxInNano} BTCO)
+                        </h2>
+                        <h3>Please be nice with the faucet, thanks! 🥰</h3>
+                        {step && (
+                            <h3>
+                                {step === "info"
+                                    ? "Getting faucet account info..."
+                                    : step === "work"
+                                    ? "Generating work for your block, please keep this tab open!"
+                                    : "Signing and sending your block..."}
+                            </h3>
+                        )}
+                        <form onSubmit={onSubmit}>
+                            <input
+                                name="xno-address"
+                                id="xno-address"
+                                type="text"
+                                maxLength={65}
+                                autoComplete="off"
+                                autoCorrect="off"
+                                autoFocus
+                                required
+                                placeholder="Insert your btco_123 address here"
+                            />
+                            <button disabled={!!step} type="submit">
+                                {!step ? "Receive" : <div id="spin"></div>}
+                            </button>
+                        </form>
+                    </div>
+                )}
                 {hash && (
                     <a
-                        id="faucet-drop-link"
-                        href={`${nanolookerBaseUrl}/block/${hash}`}
+                        //href={`${nanolookerBaseUrl}/block/${hash}`}
+                        href={`${nanolookerBaseUrl}/pt-BR/infinitum`}
+                        target="_blank"
+                        rel="noreferrer"
                     >
-                        You can see your transaction here, but be sure to set
-                        the node&apos;s URL to a test node in the settings!
+                        <h2 className="success-message">
+                            Congratulations! You have received your coins!
+                        </h2>
                     </a>
                 )}
 
-                <button
-                    id="receive-all"
-                    disabled={receivingAll}
-                    onClick={async () => {
-                        setReceivingAll(true);
-                        await fetch("/api/receiveAll", { method: "POST" });
-                        setReceivingAll(false);
-                    }}
-                >
-                    {!receivingAll ? (
-                        "Try to receive all receivable txns"
-                    ) : (
-                        <div id="spin"></div>
-                    )}
-                </button>
             </main>
 
             <footer>

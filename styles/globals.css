@@ -12,6 +12,8 @@ body > div {
     flex-direction: column;
     gap: 3rem;
     align-items: center;
+    justify-content: center; /* Centraliza verticalmente */
+    min-height: 100vh; /* Garante que o conteúdo ocupe a altura total da tela */
 }
 
 h1 {
@@ -26,6 +28,11 @@ main {
     padding: 1rem 0;
     border-radius: 15px;
     text-align: center;
+}
+
+/* Estilos para a mensagem de sucesso */
+.success-message {
+    font-size: 2rem; /* Aumenta o tamanho da fonte */
 }
 
 main > div {
